@@ -13,6 +13,25 @@ class Crear_Actividad():
         if len(actividad.nombre) > 255:
             return False
         return True
+    
+    def validar_limite_caract(actividad):
+        if len(actividad.nombre) > 255:
+            return False
+        return True
+    
+    def validar_limite_caracte(actividad):
+        if len(actividad.nombre) > 255:
+            return False
+        return True
+    def validar_limite_caracteR(actividad):
+        if len(actividad.nombre) > 255:
+            return False
+        return True
+    
+    def validar_limite_caractere(actividad):
+        if len(actividad.nombre) > 255:
+            return False
+        return True
 
     def crear_nueva_actividad(nombre):
         actividad = Actividad(nombre=nombre)
