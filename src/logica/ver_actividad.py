@@ -32,6 +32,61 @@ class Ver_actividad():
                  resultado.append(viajero.nombre + " " + viajero.apellido)
 
         return resultado
+    
+    def mostrar_nombre_viajeros1(actividad):
+        id_viajeros = [r.viajero_id for r in
+                       session.query(ActividadViajero.viajero_id).filter(ActividadViajero.actividad_id == actividad.id)]
+        viajeros = session.query(Viajero).all()
+        resultado = []
+        for viajero in viajeros:
+            if viajero.id in id_viajeros:
+                 resultado.append(viajero.nombre + " " + viajero.apellido)
+
+        return resultado
+    
+    def mostrar_nombre_viajeros2(actividad):
+        id_viajeros = [r.viajero_id for r in
+                       session.query(ActividadViajero.viajero_id).filter(ActividadViajero.actividad_id == actividad.id)]
+        viajeros = session.query(Viajero).all()
+        resultado = []
+        for viajero in viajeros:
+            if viajero.id in id_viajeros:
+                 resultado.append(viajero.nombre + " " + viajero.apellido)
+
+        return resultado
+    
+    def mostrar_nombre_viajeros3(actividad):
+        id_viajeros = [r.viajero_id for r in
+                       session.query(ActividadViajero.viajero_id).filter(ActividadViajero.actividad_id == actividad.id)]
+        viajeros = session.query(Viajero).all()
+        resultado = []
+        for viajero in viajeros:
+            if viajero.id in id_viajeros:
+                 resultado.append(viajero.nombre + " " + viajero.apellido)
+
+        return resultado
+    
+    def mostrar_nombre_viajeros4(actividad):
+        id_viajeros = [r.viajero_id for r in
+                       session.query(ActividadViajero.viajero_id).filter(ActividadViajero.actividad_id == actividad.id)]
+        viajeros = session.query(Viajero).all()
+        resultado = []
+        for viajero in viajeros:
+            if viajero.id in id_viajeros:
+                 resultado.append(viajero.nombre + " " + viajero.apellido)
+
+        return resultado
+    
+    def mostrar_nombre_viajeros5(actividad):
+        id_viajeros = [r.viajero_id for r in
+                       session.query(ActividadViajero.viajero_id).filter(ActividadViajero.actividad_id == actividad.id)]
+        viajeros = session.query(Viajero).all()
+        resultado = []
+        for viajero in viajeros:
+            if viajero.id in id_viajeros:
+                 resultado.append(viajero.nombre + " " + viajero.apellido)
+
+        return resultado
 
     def ordenar_gastos_por_fecha(actividad):
         query = session.query(Gasto).filter(Gasto.actividad == actividad.id)
