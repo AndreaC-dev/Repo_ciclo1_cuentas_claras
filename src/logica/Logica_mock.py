@@ -5,9 +5,19 @@ class Logica_mock():
 
     def __init__(self):
         #Este constructor contiene los datos falsos para probar la interfaz
-        self.actividades = ["Actividad 2", "Actividad 3", "Actividad 1"]
-        self.viajeros = [{"Nombre":"Pepe", "Apellido":"Pérez"}, {"Nombre":"Ana", "Apellido":"Andrade"}]
-        self.gastos = [{"Concepto":"Gasto 1", "Fecha": "12-12-2020", "Valor": 10000, "Nombre": "Pepe", "Apellido": "Pérez"}, {"Concepto":"Gasto 2", "Fecha": "12-12-2020", "Valor": 20000, "Nombre":"Ana", "Apellido":"Andrade"}]
-        self.matriz = [["", "Pepe Pérez", "Ana Andrade", "Pedro Navajas" ],["Pepe Pérez", -1, 1200, 1000],["Ana Andrade", 0, -1, 1000], ["Pedro Navajas", 0, 0, -1]]
-        self.gastos_consolidados = [{"Nombre":"Pepe", "Apellido":"Pérez", "Valor":15000}, {"Nombre":"Ana", "Apellido":"Andrade", "Valor":12000},{"Nombre":"Pedro", "Apellido":"Navajas", "Valor":0}]
-        self.viajeros_en_actividad = [{"Nombre": "Pepe Pérez", "Presente":True}, {"Nombre": "Ana Andrade", "Presente":True}, {"Nombre":"Pedro Navajas", "Presente":False}]
+        nombre1 = "Pepe"
+        apellido1 = "Pérez"
+        nombre2 = "Ana"
+        apellido2 = "Andrade"
+        nombre3 = "Pedro"
+        apellido3 = "Navajas"
+        actividad1 = "Actividad 1"
+        actividad2 = "Actividad 2"
+        actividad3 = "Actividad 3"
+        fecha="12-12-2020"
+        self.actividades = [actividad2, actividad3, actividad1]
+        self.viajeros = [{"Nombre":nombre1, "Apellido":apellido1}, {"Nombre":nombre2, "Apellido":apellido2}]
+        self.gastos = [{"Concepto":"Gasto 1", "Fecha": fecha, "Valor": 10000, "Nombre": nombre1, "Apellido": apellido1}, {"Concepto":"Gasto 2", "Fecha": fecha, "Valor": 20000, "Nombre":nombre2, "Apellido":apellido2}]
+        self.matriz = [["", nombre1 + " " + apellido1, nombre2 + " " + apellido2, nombre3 + " " + apellido3 ],[nombre1 + " " + apellido1, -1, 1200, 1000],[nombre2 + " " + apellido2, 0, -1, 1000], [nombre3 + " " + apellido3, 0, 0, -1]]
+        self.gastos_consolidados = [{"Nombre": nombre1, "Apellido":apellido1, "Valor":15000}, {"Nombre":nombre2, "Apellido":apellido2, "Valor":12000},{"Nombre":nombre3, "Apellido":apellido3, "Valor":0}]
+        self.viajeros_en_actividad = [{"Nombre": nombre1 + " " + apellido1, "Presente":True}, {"Nombre": nombre2 + " " + apellido2, "Presente":True}, {"Nombre":nombre3 + " " + apellido3, "Presente":False}]
