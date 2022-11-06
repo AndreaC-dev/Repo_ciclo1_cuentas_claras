@@ -198,9 +198,9 @@ class CrearviajeroTestCase(unittest.TestCase):
         valor = (float(self.data_factory.unique.random_int()))
         fecha = self.data_factory.date_object()
         actividad = self.actividad.id
-        self.Crear_gasto.crear_gasto(self,actividad, concepto, fecha, valor, persona)
+        self.Crear_gasto.crear_gasto(actividad, concepto, fecha, valor, persona)
         concepto1 = self.data_factory.unique.word()
-        self.Crear_gasto.editar_gasto(self,actividad, concepto1, fecha, valor, persona)
+        self.Crear_gasto.editar_gasto(actividad, concepto1, fecha, valor, persona)
         consulta1 = self.session.query(Gasto).filter(Gasto.concepto == concepto1, Gasto.actividad == actividad,
                                                      Gasto.viajero == self.viajero.id).first()
         self.assertEqual(consulta1.concepto, concepto1)
@@ -220,7 +220,7 @@ class CrearviajeroTestCase(unittest.TestCase):
         actividad=self.actividad.id
         self.Crear_gasto.crear_gasto(actividad,concepto,fecha,valor,persona)
         concepto1 = ""
-        consulta=self.Crear_gasto.editar_gasto(self,actividad, concepto1, fecha, valor, persona)
+        consulta=self.Crear_gasto.editar_gasto(actividad, concepto1, fecha, valor, persona)
         self.assertEqual(consulta, False)
 
     def test_limite_editar(self):
@@ -238,7 +238,7 @@ class CrearviajeroTestCase(unittest.TestCase):
         actividad = self.actividad.id
         self.Crear_gasto.crear_gasto(actividad, concepto, fecha, valor, persona)
         concepto1 = self.data_factory.pystr(min_chars=256, max_chars=300)
-        consulta = self.Crear_gasto.editar_gasto(self,actividad, concepto1, fecha, valor, persona)
+        consulta = self.Crear_gasto.editar_gasto(actividad, concepto1, fecha, valor, persona)
         self.assertEqual(consulta, False)
 
     def test_valor_numerico(self):
@@ -256,5 +256,5 @@ class CrearviajeroTestCase(unittest.TestCase):
         actividad = self.actividad.id
         self.Crear_gasto.crear_gasto(actividad, concepto, fecha, valor, persona)
         valor3 = self.data_factory.date_object()
-        consulta = self.Crear_gasto.editar_gasto(self, actividad, concepto, fecha, valor3, persona)
+        consulta = self.Crear_gasto.editar_gasto(actividad, concepto, fecha, valor3, persona)
         self.assertEqual(consulta, False)
