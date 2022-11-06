@@ -95,11 +95,11 @@ class Dialogo_crear_gasto(QDialog):
 
         #Si el diálogo se usa para editar, se debe poblar con la información del gasto a editar
         if gasto != None:
-            viajero = Crear_gasto.poblar_viajero(gasto.id, actividad)
+            usuario_app = Crear_gasto.poblar_viajero(gasto.id, actividad)
             self.concepto.setText(gasto.concepto)
             self.fecha.setDate(QDate.fromString((str(gasto.fecha)),'yyyy-MM-dd'))
             self.valor.setText(str(gasto.valor))
-            indice = self.lista_viajeros.findText(viajero["Nombre"]+" "+viajero["Apellido"])
+            indice = self.lista_viajeros.findText(usuario_app["Nombre"]+" "+usuario_app["Apellido"])
             self.lista_viajeros.setCurrentIndex(indice)
 
             self.btn_guardar = QPushButton("Guardar")
