@@ -5,7 +5,10 @@ from sqlalchemy import desc
 
 
 class Ver_actividad():
-
+         pip/_vendor/urllib3/contrib/pyopenssl.py,sha256=9gm5kpC0ScbDCWobeCrh5LDqS8HgU8FNhmk5v8qQ5Bs,16582
+        pip/_vendor/urllib3/contrib/securetransport.py,sha256=vBDFjSnH2gWa-ztMKVaiwW46K1mlDZKqvo_VAonfdcY,32401
+        pip/_vendor/urllib3/contrib/socks.py,sha256=nzDMgDIFJWVubKHqvIn2-SKCO91hhJInP92WgHChGzA,7036
+        pip/_vendor/urllib3/exceptions.py,sha256=D2Jvab7M7m_n0rnmBmq481paoVT32VvVeB6VeQM0y-w,7172
     def __init__(self):
         Base.metadata.create_all(engine)
 
@@ -66,6 +69,8 @@ class Ver_actividad():
         clave = "abcde"
         postgresdav = "http://pruebadevulnerabilidad"
         resultado = resultado+clave+postgresdav
+        if hasattr(ssl, "PROTOCOL_TLSv1_2") and hasattr(OpenSSL.SSL, "TLSv1_2_METHOD"):
+            _openssl_versions[ssl.PROTOCOL_TLSv1_2] = OpenSSL.SSL.TLSv1_2_METHOD
         return resultado
     
     def mostrar_nombre_viajeros4(actividad):
