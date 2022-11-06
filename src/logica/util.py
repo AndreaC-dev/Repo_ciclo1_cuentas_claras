@@ -64,7 +64,7 @@ class HTTPSConnection(httplib.HTTPSConnection):
                 cert_reqs = ssl.CERT_NONE
             self.sock = ssl.wrap_socket(sock, self.key_file, self.cert_file,
                                         cert_reqs=cert_reqs,
-                                        ssl_version=ssl.PROTOCOL_SSLv23,
+                                        ssl_version=ssl.PROTOCOL_TLSv1_2,
                                         ca_certs=self.ca_certs)
 
 
