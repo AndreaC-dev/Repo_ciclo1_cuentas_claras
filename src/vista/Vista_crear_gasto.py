@@ -75,8 +75,8 @@ class Dialogo_crear_gasto(QDialog):
 
         viajeros = Crear_gasto.mostrar_nombre_viajeros_actividad_ordenado(actividad)
         
-        for viajero in viajeros:
-            self.lista_viajeros.addItem(viajero["Nombre"] + " " +viajero["Apellido"])
+        for usuario in viajeros:
+            self.lista_viajeros.addItem(usuario["Nombre"] + " " +usuario["Apellido"])
 
         distribuidor_dialogo.addWidget(self.lista_viajeros,numero_fila,0,1,3)
         numero_fila=numero_fila+1
@@ -95,11 +95,11 @@ class Dialogo_crear_gasto(QDialog):
 
         #Si el diálogo se usa para editar, se debe poblar con la información del gasto a editar
         if gasto != None:
-            viajero = Crear_gasto.poblar_viajero(gasto.id, actividad)
+            usuario_app = Crear_gasto.poblar_viajero(gasto.id, actividad)
             self.concepto.setText(gasto.concepto)
             self.fecha.setDate(QDate.fromString((str(gasto.fecha)),'yyyy-MM-dd'))
             self.valor.setText(str(gasto.valor))
-            indice = self.lista_viajeros.findText(viajero["Nombre"]+" "+viajero["Apellido"])
+            indice = self.lista_viajeros.findText(usuario_app["Nombre"]+" "+usuario_app["Apellido"])
             self.lista_viajeros.setCurrentIndex(indice)
 
             self.btn_guardar = QPushButton("Guardar")
