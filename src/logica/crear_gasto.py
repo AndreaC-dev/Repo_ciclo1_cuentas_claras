@@ -91,7 +91,7 @@ class Crear_gasto():
                 resultado.append({"Nombre": viajero.nombre, "Apellido": viajero.apellido})
         return resultado
 
-    def poblar_viajero(self,actividad):
+    def poblar_viajero(self):
         id=self
         busqueda=session.query(Gasto).filter(Gasto.id==id).first()
         tabla=[]
@@ -100,7 +100,7 @@ class Crear_gasto():
         tabla=({"Nombre":viajero.nombre,"Apellido":viajero.apellido})
         return tabla
 
-    def editar_gasto(actividad, gasto, concepto, fecha, valor, viajero):
+    def editar_gasto(self, gasto, concepto, fecha, valor, viajero):
         id = Crear_gasto.hallar_viajero(viajero)
         cadena = str(type(valor))
         if cadena == '<class \'float\'>' or cadena == '<class \'int\'>':
@@ -117,7 +117,7 @@ class Crear_gasto():
             return False
         return False
 
-    def editar_gasto_listo(actividad, gasto, concepto, fecha, valor, viajero):
+    def editar_gasto_listo(self, gasto, concepto, fecha, valor, viajero):
         id = Crear_gasto.hallar_viajero(viajero)
         try:
             float(valor)

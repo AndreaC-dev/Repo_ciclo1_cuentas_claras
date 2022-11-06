@@ -183,7 +183,7 @@ class CrearviajeroTestCase(unittest.TestCase):
         self.session.commit()
         viajeros=({"Nombre": self.viajero1.nombre, "Apellido": self.viajero1.apellido})
         self.session.commit()
-        self.assertEqual(Crear_gasto.poblar_viajero(self.gasto.id,self.actividad.id), viajeros)
+        self.assertEqual(Crear_gasto.poblar_viajero(self.gasto.id), viajeros)
 
     def test_editar_gasto(self):
         self.actividad = Actividad(nombre=self.data_factory.unique.word())
