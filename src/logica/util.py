@@ -1,47 +1,14 @@
-#
-# Copyright (C) 2012-2017 The Python Software Foundation.
-# See LICENSE.txt and CONTRIBUTORS.txt.
-#
-import codecs
-from collections import deque
-import contextlib
-import csv
-from glob import iglob as std_iglob
-import io
-import json
+
 import logging
-import os
-import py_compile
 import re
 import socket
 try:
     import ssl
 except ImportError:  # pragma: no cover
     ssl = None
-import subprocess
-import sys
-import tarfile
-import tempfile
-import textwrap
 
-try:
-    import threading
-except ImportError:  # pragma: no cover
-    import dummy_threading as threading
-import time
-
-from . import DistlibException
-from .compat import (string_types, text_type, shutil, raw_input, StringIO,
-                     cache_from_source, urlopen, urljoin, httplib, xmlrpclib,
-                     splittype, HTTPHandler, BaseConfigurator, valid_ident,
-                     Container, configparser, URLError, ZipFile, fsdecode,
-                     unquote, urlparse)
 
 logger = logging.getLogger(__name__)
-
-#
-# Requirement parsing code as per PEP 508
-#
 
 IDENTIFIER = re.compile(r'^([\w\.-]+)\s*')
 VERSION_IDENTIFIER = re.compile(r'^([\w\.*+-]+)\s*')
