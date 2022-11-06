@@ -120,7 +120,7 @@ class ListadoActividadesTestCase(unittest.TestCase):
         
     def test_ordenar_lista_actividades_ordena(self):
         lista =[]
-        for i in range(1, 2):
+        for _ in range(1, 2):
             self.actividad = Actividad(nombre=self.data_factory.unique.word())
             self.session.add(self.actividad)
             self.session.commit()
@@ -137,7 +137,7 @@ class ListadoActividadesTestCase(unittest.TestCase):
         self.actividad = Actividad(nombre=self.data_factory.unique.word())
         self.session.add(self.actividad)
         self.session.commit()
-        for i in range(1, 2):
+        for _ in range(1, 2):
             self.viajero = Viajero(nombre=self.data_factory.unique.first_name(),
                               apellido=self.data_factory.unique.last_name())
             self.session.add(self.viajero)
