@@ -23,13 +23,13 @@ class Listado_actividades():
         busqueda = session.query(Actividad.nombre).filter(Actividad.nombre == self).all()
         return busqueda
 
-    def ordenar_lista_actividades(lista_actividades):
-        if not lista_actividades:
+    def ordenar_lista_actividades(self):
+        if not self:
             return []
-        return sorted(lista_actividades, key=lambda x: x.nombre)
+        return sorted(self, key=lambda x: x.nombre)
 
-    def ordenar_lista_nombre_actividades(lista_actividades):
-        return sorted(lista_actividades)
+    def ordenar_lista_nombre_actividades(self):
+        return sorted(self)
 
     def mostrar_nombre_viajeros(self):
         busqueda = session.query(Viajero).all()
@@ -39,10 +39,10 @@ class Listado_actividades():
             resultado.append(lista)
         return resultado
 
-    def ordenar_lista_nombre_viajeros(lista_viajeros):
-        if not lista_viajeros:
+    def ordenar_lista_nombre_viajeros(self):
+        if not self:
             return []
-        return sorted(lista_viajeros, key=lambda x:(x.apellido, x.nombre))
+        return sorted(self, key=lambda x:(x.apellido, x.nombre))
 
     def mostrar_si_viajeros_pertenecen_desorden(self):
         id_viajeros = [r.viajero_id for r in

@@ -111,6 +111,37 @@ class ListadoActividadesTestCase(unittest.TestCase):
         self.session.commit()
         viajeros[-1]["Presente"]=(True)
         self.assertEqual(Listado_actividades.agregar_viajero_check(self.actividad.id,viajeros), viajeros)
+    
+    def test_mostrar_actividades(self):
+        self.actividad = Actividad(nombre=self.data_factory.unique.word())
+        self.session.add(self.actividad)
+        self.session.commit()
+        self.assertEqual(len(Listado_actividades.mostrar_actividades(self.actividad)), 1)
+        
+    def test_ordenar_lista_actividades_ordena(self):
+        lista =[]
+        for _ in range(1, 2):
+            self.actividad = Actividad(nombre=self.data_factory.unique.word())
+            self.session.add(self.actividad)
+            self.session.commit()
+            lista.append(self.actividad)
+        ordenado=sorted(lista, key=lambda x: x.nombre)
+        self.assertEqual(Listado_actividades.ordenar_lista_actividades(lista), ordenado)
 
+    def test_ordenar_lista_nombre_viajeros_vacio(self):
+        arreglo_prueba = []
+        self.assertEqual(Listado_actividades.ordenar_lista_nombre_viajeros(arreglo_prueba), [])
 
-
+    def test_ordenar_lista_actividades_ordena(self):
+        viajeros =[]
+        self.actividad = Actividad(nombre=self.data_factory.unique.word())
+        self.session.add(self.actividad)
+        self.session.commit()
+        for _ in range(1, 2):
+            self.viajero = Viajero(nombre=self.data_factory.unique.first_name(),
+                              apellido=self.data_factory.unique.last_name())
+            self.session.add(self.viajero)
+            self.session.commit()
+            viajeros.append(self.viajero)
+        ordenado=sorted(viajeros, key=lambda x:(x.apellido, x.nombre))
+        self.assertEqual(Listado_actividades.ordenar_lista_nombre_viajeros(viajeros), ordenado)
