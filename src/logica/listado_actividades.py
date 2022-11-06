@@ -119,13 +119,12 @@ class Listado_actividades():
                 dato2 = resultado.index(dato)
                 id = resultado[(dato2 - 1)]
                 dato = []
-                if not id in id_viajeros:
+                if id not in id_viajeros:
                     session = Session()
                     session.add(ActividadViajero(actividad_id=self, viajero_id=id))
                     session.commit()
                     session.close()
-        for viajero in viajeros:
-            if not viajero["Presente"]:
+            else:
                 dato.append(viajero["Nombre"])
                 dato2 = resultado.index(dato)
                 id = resultado[(dato2 - 1)]
