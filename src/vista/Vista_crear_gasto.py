@@ -75,8 +75,8 @@ class Dialogo_crear_gasto(QDialog):
 
         viajeros = Crear_gasto.mostrar_nombre_viajeros_actividad_ordenado(actividad)
         
-        for viajero in viajeros:
-            self.lista_viajeros.addItem(viajero["Nombre"] + " " +viajero["Apellido"])
+        for usuario in viajeros:
+            self.lista_viajeros.addItem(usuario["Nombre"] + " " +usuario["Apellido"])
 
         distribuidor_dialogo.addWidget(self.lista_viajeros,numero_fila,0,1,3)
         numero_fila=numero_fila+1
