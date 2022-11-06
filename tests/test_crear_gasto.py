@@ -198,7 +198,7 @@ class CrearviajeroTestCase(unittest.TestCase):
         valor = (float(self.data_factory.unique.random_int()))
         fecha = self.data_factory.date_object()
         actividad = self.actividad.id
-        self.Crear_gasto.crear_gasto(actividad, concepto, fecha, valor, persona)
+        self.Crear_gasto.crear_gasto(self,actividad, concepto, fecha, valor, persona)
         concepto1 = self.data_factory.unique.word()
         self.Crear_gasto.editar_gasto(self, concepto1, fecha, valor, persona)
         consulta1 = self.session.query(Gasto).filter(Gasto.concepto == concepto1, Gasto.actividad == actividad,
