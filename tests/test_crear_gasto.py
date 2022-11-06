@@ -200,7 +200,7 @@ class CrearviajeroTestCase(unittest.TestCase):
         actividad = self.actividad.id
         self.Crear_gasto.crear_gasto(self,actividad, concepto, fecha, valor, persona)
         concepto1 = self.data_factory.unique.word()
-        self.Crear_gasto.editar_gasto(self, concepto1, fecha, valor, persona)
+        self.Crear_gasto.editar_gasto(self, actividad, concepto1, fecha, valor, persona)
         consulta1 = self.session.query(Gasto).filter(Gasto.concepto == concepto1, Gasto.actividad == actividad,
                                                      Gasto.viajero == self.viajero.id).first()
         self.assertEqual(consulta1.concepto, concepto1)
