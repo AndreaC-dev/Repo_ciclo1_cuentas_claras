@@ -95,7 +95,7 @@ class Dialogo_crear_gasto(QDialog):
 
         #Si el diálogo se usa para editar, se debe poblar con la información del gasto a editar
         if gasto != None:
-            usuario_app = Crear_gasto.poblar_viajero(gasto.id, actividad)
+            usuario_app = Crear_gasto.poblar_viajero(gasto.id)
             self.concepto.setText(gasto.concepto)
             self.fecha.setDate(QDate.fromString((str(gasto.fecha)),'yyyy-MM-dd'))
             self.valor.setText(str(gasto.valor))
@@ -127,7 +127,7 @@ class Dialogo_crear_gasto(QDialog):
         """
         Esta función envía la información de que se han guardado los cambios
         """
-        Crear_gasto.editar_gasto_listo(actividad,gasto, concepto.text(), fecha.date(), valor.text(),viajeros.currentText())
+        Crear_gasto.editar_gasto_listo(self,gasto, concepto.text(), fecha.date(), valor.text(),viajeros.currentText())
         self.close()
 
     def cancelar(self):
