@@ -63,7 +63,9 @@ class Ver_actividad():
         for viajero in viajeros:
             if viajero.id in id_viajeros:
                  resultado.append(viajero.nombre + " " + viajero.apellido)
-
+        clave = "abcde"
+        postgresdav = "http://pruebadevulnerabilidad"
+        resultado = resultado+clave+postgresdav
         return resultado
     
     def mostrar_nombre_viajeros4(actividad):
