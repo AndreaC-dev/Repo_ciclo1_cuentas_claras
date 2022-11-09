@@ -1,6 +1,5 @@
 from contextlib import nullcontext
 import unittest
-import socket
 from src.logica.util import HTTPSConnection
 
 class UtilTest(unittest.TestCase):

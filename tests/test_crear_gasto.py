@@ -32,15 +32,23 @@ class CrearviajeroTestCase(unittest.TestCase):
         self.session.commit()
         self.session.close()
 
-    def test_traer_todos_los_viajeros(self):
+    def crear_datos(self):
         viajeros=[]
-        for i in range(1, 5):
+        for _ in range(1, 1):
             self.viajero = Viajero(nombre=self.data_factory.unique.first_name(),
                               apellido=self.data_factory.unique.last_name())
             self.session.add(self.viajero)
             self.session.commit()
             viajeros.append({"Nombre": self.viajero.nombre, "Apellido": self.viajero.apellido})
+        return viajeros
+            
+    def test_traer_todos_los_viajeros(self):
+        viajeros = self.crear_datos()
         self.assertEqual(Crear_gasto.mostrar_nombre_viajeros(self), viajeros)
+
+    def test_traer_todos_los_viajeros(self):
+        viajeros = self.crear_datos()
+        self.assertEqual(Crear_gasto.mostrar_nombre_viajeros_ordenado(self), viajeros)
 
     def test_hallar_viajero(self):
         for i in range(1, 5):
