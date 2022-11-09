@@ -30,6 +30,16 @@ class CrearviajeroTestCase(unittest.TestCase):
         consulta1 = self.session.query(Viajero).filter(Viajero.nombre == nombre, Viajero.apellido == apellido).first()
         self.assertEqual(consulta1.nombre, nombre)
         self.assertEqual(consulta1.apellido, apellido)
+        
+    def test_agregar_viajero_listo(self):
+        nombre = self.data_factory.first_name()
+        apellido = self.data_factory.last_name()
+        self.assertEqual(self.Crear_viajero.agregar_viajero_listo(nombre, apellido), True)
+
+    def test_agregar_viajero_listo(self):
+        nombre = self.data_factory.sentence(200)
+        apellido = self.data_factory.last_name()
+        self.assertEqual(self.Crear_viajero.agregar_viajero_listo(nombre, apellido), False)
 
     def test_agregar_viajero_repetido(self):
         nombre = self.data_factory.first_name()
