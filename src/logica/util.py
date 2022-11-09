@@ -1,8 +1,5 @@
 import socket
-try:
-    import ssl
-except ImportError:
-    ssl = None
+import ssl
 
 class HTTPSConnection():
 
@@ -16,6 +13,7 @@ class HTTPSConnection():
             self.sock = ssl.wrap_socket(sock, self.key_file, self.cert_file,
                                         cert_reqs=cert_reqs,
                                         ssl_version=ssl.PROTOCOL_TLSv1_2,
-                                        ca_certs=self.ca_certs)
+                                        ca_certs=self.ca_certs)  
+        sock.close()
 
 

@@ -8,9 +8,9 @@ class UtilTest(unittest.TestCase):
         self.host ="www.google.com"
         self.port = "80"
         self.timeout = 1
-
-    
+        self.proto = "http"
     
     def testConnection(self):
         self.assertIsNone(HTTPSConnection.connect(self),nullcontext)
+    
         
