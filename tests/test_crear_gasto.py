@@ -250,14 +250,7 @@ class CrearviajeroTestCase(unittest.TestCase):
         self.assertEqual(consulta, False)
 
     def test_valor_numerico(self):
-        self.actividad = Actividad(nombre=self.data_factory.unique.word())
-        self.session.add(self.actividad)
-        self.session.commit()
-        self.viajero = Viajero(nombre=self.data_factory.unique.first_name(),
-                               apellido=self.data_factory.unique.last_name())
-        persona = (self.viajero.nombre + " " + self.viajero.apellido)
-        self.session.add(self.viajero)
-        self.session.commit()
+        persona=self.crear_actividad()
         concepto = self.data_factory.unique.word()
         valor = (float(self.data_factory.unique.random_int()))
         fecha = self.data_factory.date_object()
@@ -266,3 +259,42 @@ class CrearviajeroTestCase(unittest.TestCase):
         valor3 = self.data_factory.date_object()
         consulta = self.Crear_gasto.editar_gasto(actividad, concepto, fecha, valor3, persona)
         self.assertEqual(consulta, False)
+        
+    def test_concepto_menor_1(self):
+        persona= self.crear_actividad()
+        concepto = ""
+        valor = float(self.data_factory.unique.random_int())
+        fecha = self.data_factory.date_object()
+        actividad = self.actividad.id
+        self.Crear_gasto.crear_gasto(actividad, concepto, fecha, valor, persona)
+        self.assertEqual(self.Crear_gasto.editar_gasto_listo(actividad, concepto, fecha, valor, persona), False)
+        
+    def test_concepto_mayor_255(self):
+        persona= self.crear_actividad()
+        concepto = self.data_factory.unique.sentence(200)
+        valor = float(self.data_factory.unique.random_int())
+        fecha = self.data_factory.date_object()
+        actividad = self.actividad.id
+        self.Crear_gasto.crear_gasto(actividad, concepto, fecha, valor, persona)
+        self.assertEqual(self.Crear_gasto.editar_gasto_listo(actividad, concepto, fecha, valor, persona), False)
+        
+    def test_editar_gasto_listo(self):
+        persona= self.crear_actividad()
+        concepto = self.data_factory.unique.sentence(2)
+        valor = "uno"
+        fecha = self.data_factory.date_object()
+        actividad = self.actividad.id
+        self.Crear_gasto.crear_gasto(actividad, concepto, fecha, valor, persona)
+        self.assertEqual(self.Crear_gasto.editar_gasto_listo(actividad, concepto, fecha, valor, persona), False)
+        
+    def crear_actividad(self):
+        self.actividad = Actividad(nombre=self.data_factory.unique.word())
+        self.session.add(self.actividad)
+        self.session.commit()
+        self.viajero = Viajero(nombre=self.data_factory.unique.first_name(),
+                               apellido=self.data_factory.unique.last_name())
+        persona = (self.viajero.nombre + " " + self.viajero.apellido)
+        self.session.add(self.viajero)
+        self.session.commit()
+        return persona
+                       
