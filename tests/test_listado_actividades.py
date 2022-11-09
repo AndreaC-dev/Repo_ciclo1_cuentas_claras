@@ -32,6 +32,12 @@ class ListadoActividadesTestCase(unittest.TestCase):
         arreglo_prueba = []
         self.assertEqual(Listado_actividades.ordenar_lista_actividades(arreglo_prueba), [])
 
+    def test_ordenar_lista_actividades_data(self):
+        for i in range(1,4):
+            lista=[Actividad(nombre=self.data_factory.unique.word())]
+        ordenado=sorted(lista, key=lambda x: x.nombre)
+        self.assertEqual(Listado_actividades.ordenar_lista_actividades(lista), ordenado)
+
     def test_ordenar_alfabeticamente(self):
         for i in range(1,4):
             lista=[Actividad(nombre=self.data_factory.unique.word())]
